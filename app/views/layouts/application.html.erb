@@ -10,10 +10,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
-    <%= yield %>
+  <body class="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <header>
+      <div class="container">
+        <%= render "partials/navbar" %>
+        <%= render "partials/flash" %>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+      <%#= render "partials/footer" %>
+    </main>
   </body>
 </html>
