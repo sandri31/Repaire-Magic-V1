@@ -80,7 +80,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-5 pt-0">
-                  <%= form_for(@resource, as: @resource_name, url: registration_path(@resource_name), html: { class: "", "data-dashlane-rid" => "9ed8482a98a6f7aa", "data-form-type" => "register" }) do |f| %>
+                  <%= form_for(@resource, as: @resource_name, url: user_registration_path, html: { class: "", "data-dashlane-rid" => "9ed8482a98a6f7aa", "data-form-type" => "register" }) do |f| %>
                     <% if @resource.errors.any? %>
                       <div id="error_explanation">
                         <h2><%= pluralize(@resource.errors.count, "erreur") %> empêche l'enregistrement :</h2>
