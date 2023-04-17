@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include FlashHelper
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_devise_variables
 

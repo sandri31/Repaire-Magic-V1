@@ -2,8 +2,14 @@ class SessionsController < Devise::SessionsController
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
-    yield resource if block_given?
-    respond_with(resource, serialize_options(resource))
+
+    respond_to do |format|
+      format.html { super }
+      format.turbo_stream do
+        flash.now[:alert] = "Mauvais email ou mot de passe."
+        render turbo_stream: turbo_stream.replace(:flash_messages, partial: "partials/flash", locals: { flash: flash })
+      end
+    end
   end
 
   def create
