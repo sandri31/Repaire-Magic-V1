@@ -127,7 +127,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-5 pt-0">
-                  <%= form_for(@resource, as: @resource_name, url: new_password_path(@resource_name), html: { class: "", "data-dashlane-rid" => "9ed8482a98a6f7aa", "data-form-type" => "password_reset" }) do |f| %>
+                  <%= form_for(@resource, as: @resource_name, url: password_path(@resource_name), html: { class: "", "data-dashlane-rid" => "9ed8482a98a6f7aa", "data-form-type" => "password_reset" }) do |f| %>
                     <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
                     <div class="form-floating mb-3">
                       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-3", id: "floatingResetEmail", placeholder: "name@login.com", required: true %>
