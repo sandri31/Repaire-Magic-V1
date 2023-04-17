@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
       respond_to do |format|
         format.html { render :new }
         format.turbo_stream do
-          flash.now[:alert] = resource.errors.full_messages.to_sentence
+          flash.now[:alert] = resource.errors.full_messages.each_with_index.map { |msg, index| "#{msg}#{' Et ' if index < resource.errors.count - 1}" }.join
           render turbo_stream: turbo_stream.replace(:flash_messages, partial: "partials/flash", locals: { flash: flash })
         end
       end
