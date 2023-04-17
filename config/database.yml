@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %> # for railway.app deployment
   database: authentification_with_devise_production
   username: authentification_with_devise
   password: <%= ENV["AUTHENTIFICATION_WITH_DEVISE_DATABASE_PASSWORD"] %>
