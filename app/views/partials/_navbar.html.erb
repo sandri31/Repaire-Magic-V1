@@ -21,12 +21,12 @@
           </li>
           <!-- Display user name and logout button when user is signed in -->
           <% if user_signed_in? %>
-            <li class="nav-item">
-              <span class="nav-link fs-5 fw-bold mx-3 text-muted">Bonjour, <%= current_user.username %></span>
-            </li>
             <!-- Display logout button when user is signed in -->
             <li class="nav-item">
               <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link fs-5 fw-bold mx-3" %>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation"><%= current_user.username %></span>
             </li>
           <% else %>
             <!-- Display login and registration buttons when user is not signed in -->
