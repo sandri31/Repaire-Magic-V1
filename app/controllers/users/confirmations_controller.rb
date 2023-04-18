@@ -16,17 +16,24 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def create
-    self.resource = resource_class.send_confirmation_instructions(resource_params)
-    yield resource if block_given?
-
-    if successfully_sent?(resource)
-      session[:confirmation_sent] = true
-      respond_with({}, location: after_resending_confirmation_instructions_path_for(resource_name))
-    elsif resource.errors[:email].include?("n'a pas été trouvé(e)")
-      flash[:alert] = "Email n'a pas été trouvé(e)"
+    self.resource = resource_class.find_or_initialize_with_error_by(:unconfirmed_email, resource_params[:email])
+    if resource.persisted? && resource.confirmed?
+      flash[:alert] = "Le compte est déjà confirmé. Veuillez essayer de vous connecter."
       redirect_to root_path
     else
-      respond_with(resource)
+      self.resource = resource_class.send_confirmation_instructions(resource_params)
+      yield resource if block_given?
+
+      if successfully_sent?(resource)
+        session[:confirmation_sent] = true
+        respond_with({}, location: after_resending_confirmation_instructions_path_for(resource_name))
+      elsif resource.errors[:email].include?("n'a pas été trouvé(e)")
+        flash[:alert] = "Email n'a pas été trouvé(e)"
+        redirect_to root_path
+      else
+        flash[:alert] = resource.errors.full_messages.join(', ')
+        redirect_to root_path
+      end
     end
   end
 
