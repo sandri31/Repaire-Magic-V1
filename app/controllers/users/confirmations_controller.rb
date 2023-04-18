@@ -7,6 +7,9 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       sign_in(resource) # Logs the user in automatically
       set_flash_message(:notice, :confirmed)
       respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
+    elsif resource.confirmed?
+      set_flash_message(:alert, :already_confirmed)
+      redirect_to root_path
     else
       respond_with_navigational(resource.errors, status: :unprocessable_entity) { render :new }
     end
