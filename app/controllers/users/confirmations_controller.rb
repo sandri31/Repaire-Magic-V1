@@ -15,9 +15,28 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     end
   end
 
+  def create
+    self.resource = resource_class.send_confirmation_instructions(resource_params)
+    yield resource if block_given?
+
+    if successfully_sent?(resource)
+      session[:confirmation_sent] = true
+      respond_with({}, location: after_resending_confirmation_instructions_path_for(resource_name))
+    elsif resource.errors[:email].include?("n'a pas été trouvé(e)")
+      flash[:alert] = "Email n'a pas été trouvé(e)"
+      redirect_to root_path
+    else
+      respond_with(resource)
+    end
+  end
+
   protected
 
   def after_confirmation_path_for(_resource_name, _resource)
+    root_path
+  end
+
+  def after_resending_confirmation_instructions_path_for(_resource_name)
     root_path
   end
 end

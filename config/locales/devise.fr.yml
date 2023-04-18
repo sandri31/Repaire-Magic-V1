@@ -9,6 +9,8 @@ fr:
               taken: "déjà utilisé."
             pseudo:
               taken: "déjà pris. Veuillez en choisir un autre."
+            password:
+              too_short: "doit contenir au moins 6 caractères."
   devise:
     confirmations:
       already_confirmed: "Votre compte a déjà été confirmé."
