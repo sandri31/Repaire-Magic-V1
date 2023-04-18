@@ -29,3 +29,15 @@
   backdrop-filter: blur(60px);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
+
+.navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(60px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.yellow-username {
+  color: yellow !important;
+}

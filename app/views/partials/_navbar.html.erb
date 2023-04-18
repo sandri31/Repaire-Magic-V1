@@ -1,8 +1,9 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand fw-bold fs-2" href="#">Logo</a>
+      <!-- Change de couleur le navbar-toggler en blanc -->
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -26,7 +27,7 @@
               <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link fs-5 fw-bold mx-3" %>
             </li>
             <li class="nav-item">
-              <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation"><%= current_user.pseudo %></span>
+              <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation yellow-username">Florent</span>
             </li>
           <% else %>
             <!-- Display login and registration buttons when user is not signed in -->
