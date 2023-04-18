@@ -11,6 +11,10 @@
   </head>
 
   <body class="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <header>
       <div class="container">
         <% unless controller.controller_name == "passwords" && controller.action_name == "edit" %>
