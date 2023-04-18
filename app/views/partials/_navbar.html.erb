@@ -26,7 +26,7 @@
               <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link fs-5 fw-bold mx-3" %>
             </li>
             <li class="nav-item">
-              <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation"><%= current_user.username %></span>
+              <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation"><%= current_user.pseudo %></span>
             </li>
           <% else %>
             <!-- Display login and registration buttons when user is not signed in -->
@@ -92,8 +92,8 @@
                       </div>
                     <% end %>
                     <div class="form-floating mb-3">
-                      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control rounded-3", id: "floatingUsername", placeholder: "Pseudo", required: true %>
-                      <label for="floatingUsername">Pseudo</label>
+                      <%= f.text_field :pseudo, autofocus: true, autocomplete: "pseudo", class: "form-control rounded-3", id: "floatingpseudo", placeholder: "Pseudo", required: true %>
+                      <label for="floatingpseudo">Pseudo</label>
                     </div>
                     <div class="form-floating mb-3">
                       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-3", id: "floatingInput", placeholder: "name@login.com", required: true %>

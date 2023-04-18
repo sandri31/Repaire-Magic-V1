@@ -6,9 +6,9 @@ fr:
         user:
           attributes:
             email:
-              taken: "est déjà utilisé."
-            username:
-              taken: "est déjà pris."
+              taken: "déjà utilisé."
+            pseudo:
+              taken: "déjà pris. Veuillez en choisir un autre."
   devise:
     confirmations:
       confirmed: "Votre compte a été validé."

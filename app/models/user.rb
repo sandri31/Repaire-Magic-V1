@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, presence: true, uniqueness: true, on: :create
+  validates :pseudo, presence: true, uniqueness: true, on: :create
 
   attr_accessor :login
 
@@ -21,10 +21,10 @@ class User < ApplicationRecord
     puts "DEBUG: login value is: #{login.inspect}" # DEBUG temporary
 
     if login
-      query_conditions = ['lower(username) = :value OR lower(email) = :value', { value: login.strip.downcase }]
+      query_conditions = ['lower(pseudo) = :value OR lower(email) = :value', { value: login.strip.downcase }]
       puts "DEBUG: query_conditions are: #{query_conditions.inspect}" # DEBUG temporary
       where(conditions).where(query_conditions).first
-    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+    elsif conditions.has_key?(:pseudo) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
   end
