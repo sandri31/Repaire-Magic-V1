@@ -6,7 +6,10 @@ class SessionsController < Devise::SessionsController
     respond_to do |format|
       format.html { super }
       format.turbo_stream do
-        flash.now[:alert] = "Mauvais email ou mot de passe."
+        @password_reset = session.delete(:password_reset)
+        if !@password_reset
+          flash.now[:alert] = "Mauvais email ou mot de passe."
+        end
         render turbo_stream: turbo_stream.replace(:flash_messages, partial: "partials/flash", locals: { flash: flash })
       end
     end
