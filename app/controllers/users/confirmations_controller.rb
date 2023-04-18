@@ -4,7 +4,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     yield resource if block_given?
 
     if resource.errors.empty?
-      sign_in(resource) # Ajoutez cette ligne pour connecter l'utilisateur automatiquement
+      sign_in(resource) # Logs the user in automatically
       set_flash_message(:notice, :confirmed)
       respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
     else
