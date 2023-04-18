@@ -13,7 +13,9 @@
   <body class="<%= controller.controller_name %>-<%= controller.action_name %>">
     <header>
       <div class="container">
-        <%= render "partials/navbar" %>
+        <% unless controller.controller_name == "passwords" && controller.action_name == "edit" %>
+          <%= render "partials/navbar" %>
+        <% end %>
         <%= render "partials/flash" %>
       </div>
     </header>
