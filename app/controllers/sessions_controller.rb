@@ -7,16 +7,15 @@ class SessionsController < Devise::SessionsController
       format.html { super }
       format.turbo_stream do
         @password_reset = session.delete(:password_reset)
-        if !@password_reset
-          flash.now[:alert] = "Mauvais email ou mot de passe."
-        end
-        render turbo_stream: turbo_stream.replace(:flash_messages, partial: "partials/flash", locals: { flash: flash })
+        flash.now[:alert] = 'Mauvais email ou mot de passe.' unless @password_reset
+        render turbo_stream: turbo_stream.replace(:flash_messages, partial: 'partials/flash', locals: { flash: })
       end
     end
   end
 
   def create
-    puts "DEBUG: auth_options are: #{auth_options.inspect}" # DEBUG temporary
+    # puts "DEBUG: auth_options are: #{auth_options.inspect}" # DEBUG temporary
+    # Rails.logger.debug "DEBUG: request params are: #{request.parameters.inspect}" # DEBUG temporary
     self.resource = warden.authenticate!(auth_options)
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)

@@ -50,7 +50,6 @@
                 </div>
                 <div class="modal-body p-5 pt-0">
                   <%= form_for(@resource, as: @resource_name, url: session_path(@resource_name), html: { class: "", "data-dashlane-rid" => "9ed8482a98a6f7aa", "data-form-type" => "login" }) do |f| %>
-                    <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
                     <div class="form-floating mb-3">
                       <%= f.text_field :login, autofocus: true, autocomplete: "login", class: "form-control rounded-3", id: "floatingLogin", placeholder: "Email ou Pseudo", required: true %>
                       <label for="floatingLogin">Email ou Pseudo</label>
