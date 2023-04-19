@@ -26,6 +26,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = ENV['MAILER_FROM']
   config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET']
+  config.omniauth :github, ENV['GITHUB_OAUTH_CLIENT_ID'], ENV['GITHUB_OAUTH_CLIENT_SECRET']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -272,7 +273,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :github, 'cf69d8bf4dbe8de14913', 'ab9c9969d8c5dafb7b6ab40ec6f41fff9e3f61a4'
+  config.omniauth :github, 'cf69d8bf4dbe8de14913', '2eeb66054b77e574b65cf16f7199d89bf895ce59'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
