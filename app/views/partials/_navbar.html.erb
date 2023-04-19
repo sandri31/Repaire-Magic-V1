@@ -76,15 +76,15 @@
                     <a href="#" class="text-warning" data-bs-toggle="modal" data-bs-target="#passwordResetModal">Mot de passe oublié ?</a><br />
                   </p>
                   <hr class="my-4">
-                  <h2 class="fs-5 fw-bold mb-3 text-white">Ou connectez-vous avec</h2>
+                  <h2 class="fs-5 fw-bold mb-3 text-white">Ou connectez-vous :</h2>
                   <!-- Google -->
                   <% if devise_mapping.omniauthable? %>
                     <% resource_class.omniauth_providers.each do |provider| %>
                       <% if provider.to_s == "google_oauth2" %>
                         <%= form_for "Login", url: omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: "false" }, html: { class: 'w-100' } do |f| %>
-                          <button class="w-100 py-2 mb-2 btn btn-outline-warning rounded-3" type="submit">
+                          <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
                             <ion-icon name="logo-google"></ion-icon>
-                            Connectez-vous avec Google
+                            Sign in with Google
                           </button>
                         <% end %>
                       <% end %>
