@@ -31,7 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, params)
-    if resource.provider == 'google_oauth2'
+    if resource.provider == 'google_oauth2' || resource.provider == 'github'
       params.delete('current_password')
       resource.password = params['password'] if params['password'].present?
 

@@ -77,25 +77,27 @@
                   </p>
                   <hr class="my-4">
                   <h2 class="fs-5 fw-bold mb-3 text-white">Ou connectez-vous :</h2>
-                  <!-- Google -->
                   <% if devise_mapping.omniauthable? %>
                     <% resource_class.omniauth_providers.each do |provider| %>
+                      <!-- Google -->
                       <% if provider.to_s == "google_oauth2" %>
                         <%= form_for "Login", url: omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: "false" }, html: { class: 'w-100' } do |f| %>
-                          <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                          <button class="w-100 py-2 mb-2 btn btn-primary rounded-3" type="submit">
                             <ion-icon name="logo-google"></ion-icon>
                             Sign in with Google
+                          </button>
+                        <% end %>
+                      <!-- Github -->
+                      <% elsif provider.to_s == "github" %>
+                        <%= form_for "Login", url: omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: "false" }, html: { class: 'w-100' } do |f| %>
+                          <button class="w-100 py-2 mb-2 btn btn-dark rounded-3" type="submit" data-dashlane-label="true" data-dashlane-rid="baf40f0347310a3e" data-form-type="other">
+                            <ion-icon name="logo-github"></ion-icon>
+                            Sign in with Github
                           </button>
                         <% end %>
                       <% end %>
                     <% end %>
                   <% end %>
-                  <!-- Next feature Github login
-                  <button class="w-100 py-2 mb-2 btn btn-outline-success rounded-3" type="submit" data-dashlane-label="true" data-dashlane-rid="baf40f0347310a3e" data-form-type="other">
-                    <ion-icon name="logo-github"></ion-icon>
-                    Connectez-vous avec Github
-                  </button>
-                  -->
                 </div>
               </div>
             </div>
