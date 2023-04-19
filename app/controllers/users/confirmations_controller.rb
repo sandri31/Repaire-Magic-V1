@@ -18,7 +18,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   def create
     self.resource = resource_class.find_or_initialize_with_error_by(:unconfirmed_email, resource_params[:email])
     if resource.persisted? && resource.confirmed?
-      flash[:alert] = "Le compte est déjà confirmé. Veuillez essayer de vous connecter."
+      flash[:alert] = 'Le compte est déjà confirmé. Veuillez essayer de vous connecter.'
       redirect_to root_path
     else
       self.resource = resource_class.send_confirmation_instructions(resource_params)
