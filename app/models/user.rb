@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
-  validates :pseudo, presence: true, uniqueness: true, on: :create
+  validates :pseudo, uniqueness: { case_sensitive: false }, allow_blank: true, on: :create
 
   attr_accessor :login
 
@@ -15,14 +15,16 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
-      user.full_name = auth.info.name # assuming the user model has a name
-      user.avatar_url = auth.info.image # assuming the user model has an image
-      user.pseudo = auth.info.email.split('@').first # generate a pseudo from email
+      user.full_name = auth.info.name
+      user.avatar_url = auth.info.image
 
-      # Show validation errors in logs
+      if auth.info.email
+        user.pseudo = auth.info.email.split('@').first
+      elsif auth.provider == 'github' && auth.extra.raw_info.login
+        user.pseudo = auth.extra.raw_info.login
+      end
+
       Rails.logger.error "User validation errors: #{user.errors.full_messages.join(', ')}" unless user.save
     end
   end
