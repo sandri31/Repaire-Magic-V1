@@ -35,7 +35,7 @@
               <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation yellow-username"><%= current_user.pseudo %></span>
             </li>
             <li class="nav-item">
-              <% if current_user.provider == "google_oauth2" %>
+              <% if current_user.provider == "google_oauth2" || current_user.provider == "github" %>
                 <%= image_tag current_user.avatar_url, class: "rounded-circle" %>
               <% end %>
             </li>
