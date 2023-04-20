@@ -3,3 +3,14 @@
   margin: 1rem auto;
   text-align: center;
 }
+
+@media (max-width: 999px) {
+  .alert-custom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    width: 100%;
+  }
+}
