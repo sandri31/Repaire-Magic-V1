@@ -24,7 +24,7 @@ fr:
       inactive: "Votre compte n'est pas encore activé."
       invalid: "Mot de passe incorrect."
       last_attempt: "Vous avez droit à une tentative avant que votre compte ne soit verrouillé."
-      locked: "Votre compte est verrouillé."
+      locked: "Votre compte est verrouillé 2 heures pour cause de trop nombreuses tentatives de connexion."
       not_found_in_database: "Email et/ou mot de passe incorrect(s)."
       timeout: "Votre session est expirée. Veuillez vous reconnecter pour continuer."
       unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
