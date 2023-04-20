@@ -1,0 +1,29 @@
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.footer-icons {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .footer-icons {
+    font-size: 1.5rem;
+  }
+}
+
+.icon-column {
+  padding-right: 4%;
+}
+
+.logo-text-container {
+  margin-left: 4%;
+}
+
