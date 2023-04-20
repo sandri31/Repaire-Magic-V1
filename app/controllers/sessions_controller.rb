@@ -36,7 +36,11 @@ class SessionsController < Devise::SessionsController
     elsif user
       authenticate_and_sign_in_user(user)
     else
-      flash.now[:alert] = 'Email et/ou mot de passe incorrect(s).'
+      flash.now[:alert] = if User.find_for_database_authentication(login: params[:user][:login]).nil?
+                            "Email/Pseudo n'existe pas."
+                          else
+                            'Mot de passe incorrect.'
+                          end
       render :new
     end
   end
@@ -48,7 +52,11 @@ class SessionsController < Devise::SessionsController
     elsif user
       authenticate_and_sign_in_user(user, turbo_stream: true)
     else
-      flash.now[:alert] = 'Email/Pseudo incorrect(s).'
+      flash.now[:alert] = if User.find_for_database_authentication(login: params[:user][:login]).nil?
+                            "Email/Pseudo n'existe pas."
+                          else
+                            'Mot de passe incorrect.'
+                          end
       render turbo_stream: turbo_stream.replace(:flash_messages, partial: 'partials/flash', locals: { flash: })
     end
   end
