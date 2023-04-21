@@ -7,3 +7,8 @@
 @import "contact";
 @import "services";
 @import "footer";
+
+main {
+  flex: 1;
+  min-height: calc(150vh - 150px);
+}
