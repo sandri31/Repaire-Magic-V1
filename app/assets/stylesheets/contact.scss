@@ -1,5 +1,5 @@
 .static_pages-contact {
-  background-image: url('background02.jpg');
+  background-image: image-set(image-url('background02.webp') 1x, image-url('background02.jpg') 1x);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
