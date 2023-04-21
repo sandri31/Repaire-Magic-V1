@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Authentification avec Ruby on Rails 7 et Devise
 
-Things you may want to cover:
+Ce projet est une implémentation de l'authentification dans une application Ruby on Rails 7 en utilisant la gem Devise.
 
-* Ruby version
+![Authentification_Capture](https://user-images.githubusercontent.com/85675011/233649523-2d30faac-3f3a-4780-84ba-b395c9433995.png)
 
-* System dependencies
+## Prérequis
 
-* Configuration
+- Ruby on Rails 7
+- Ruby
+- Une base de données compatible avec Rails (par exemple, PostgreSQL, MySQL ou SQLite)
 
-* Database creation
+## Fonctionnalités
 
-* Database initialization
+- Inscription des utilisateurs (pseudo, e-mail, mot de passe, confirmation du mot de passe)
+- Connexion et déconnexion des utilisateurs
+- Confirmation du compte par e-mail
+- Réinitialisation du token d'authentification par e-mail
+- Réinitialisation du mot de passe avec envoi d'e-mail
+- OAuth avec Google / GitHub
+- Messages d'erreur personnalisés
+- Limitation du nombre de tentatives de connexion
 
-* How to run the test suite
+## Licence
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ce projet est sous licence [MIT](https://opensource.org/licenses/MIT). Vous êtes libre de l'utiliser, de le modifier et de le redistribuer selon les termes de la licence.
