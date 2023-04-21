@@ -9,3 +9,13 @@
 .white-text {
   color: white !important;
 }
+
+.static_pages-contact footer {
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: rgba(15, 15, 15, 0.562);
+  }
+}
