@@ -27,6 +27,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def failure
+    flash[:alert] = "Une erreur s'est produite lors de la connexion avec GitHub. Veuillez réessayer."
+    redirect_to root_path
+  end
+
   private
 
   def auth
