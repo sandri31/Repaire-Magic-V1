@@ -9,8 +9,32 @@ Ce projet est une implémentation de l'authentification dans une application Rub
 ## Prérequis
 
 - Ruby on Rails 7
-- Ruby
+- Ruby 3.1.2
 - Une base de données compatible avec Rails (par exemple, PostgreSQL, MySQL ou SQLite)
+
+## Installation
+
+1. Cloner le projet en utilisant une URL HTTPS ou SSH
+```bash
+git clone https://github.com/sandri31/Authentification-with-Devise.git
+```
+```bash
+git clone git@github.com:sandri31/Authentification-with-Devise.git
+```
+2. Installer les dépendances avec
+```bash
+bundle install
+```
+3. Créer la base de données et lancer les migrations avec
+```bash
+rails db:create
+rails db:migrate
+```
+4. Lancer le serveur
+```bash
+rails server
+```
+5. Ouvrir le navigateur à l'adresse http://localhost:3000
 
 ## Fonctionnalités
 
