@@ -21,8 +21,9 @@ git clone https://github.com/sandri31/Authentification-with-Devise.git
 ```bash
 git clone git@github.com:sandri31/Authentification-with-Devise.git
 ```
-2. Installer les dépendances avec
+2. Ouvrir le projet et installer les dépendances avec
 ```bash
+cd Authentification-with-Devise
 bundle install
 ```
 3. Créer la base de données et lancer les migrations avec
