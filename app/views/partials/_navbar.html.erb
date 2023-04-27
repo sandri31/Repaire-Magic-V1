@@ -66,7 +66,7 @@
                         <%= f.text_field :pseudo, autofocus: true, autocomplete: "pseudo", class: "form-control rounded-3", value: current_user.pseudo, placeholder: "Changer de pseudo (facultatif)" %>
                         <label for="floatingPseudo">Pseudo</label>
                       </div>
-                      <div class="form-floating mb-3">
+                      <div class="form-floating mb-3 gray-background">
                         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-3", value: current_user.email, placeholder: "name@example.com", required: true, readonly: true, disabled: true %>
                         <label for="floatingEmail">Email</label>
                       </div>
