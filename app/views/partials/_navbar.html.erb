@@ -32,7 +32,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <span class="nav-link fs-5 fw-bold mx-3 text-muted no-animation yellow-username"><%= current_user.pseudo %></span>
+              <a href="#" class="nav-link fs-5 fw-bold mx-3 yellow-username" data-bs-toggle="modal" data-bs-target="#editProfileModal"><%= current_user.pseudo %></a>
             </li>
             <li class="nav-item">
               <% if current_user.provider == "google_oauth2" || current_user.provider == "github" %>
@@ -49,6 +49,46 @@
             <!-- <li class="nav-item">
               <a class="nav-link fs-5 fw-bold mx-3" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Inscription</a>
             </li> -->
+          <% end %>
+          <!-- Edit Profile Modal -->
+          <% if user_signed_in? %>
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header p-5 pb-4 border-bottom-0">
+                    <h3 class="fw-bold mb-0 fs-2 white-text">Éditer votre compte</h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body p-5 pt-0">
+                    <p class="mb-0 fs-5 white-text mb-3">Si vous souhaitez changer de pseudo ou de mot de passe, veuillez valider avec votre email et mot de passe actuel.</p>
+                    <%= form_for(@resource, as: @resource_name, url: registration_path(@resource_name), html: { method: :put }) do |f| %>
+                      <div class="form-floating mb-3">
+                        <%= f.text_field :pseudo, autofocus: true, autocomplete: "pseudo", class: "form-control rounded-3", value: current_user.pseudo, placeholder: "Changer de pseudo (facultatif)" %>
+                        <label for="floatingPseudo">Pseudo</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-3", value: current_user.email, placeholder: "name@example.com", required: true, readonly: true, disabled: true %>
+                        <label for="floatingEmail">Email</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                      <%= f.password_field :password, autocomplete: "new-password", class: "form-control rounded-3", id: "floatingNewPassword", placeholder: "Nouveau mot de passe (facultatif)" %>
+                        <label for="floatingNewPassword">Nouveau mot de passe</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control rounded-3", id: "floatingPasswordConfirmation", placeholder: "Confirmer le nouveau mot de passe" %>
+                        <label for="floatingPasswordConfirmation">Confirmation du nouveau mot de passe</label>
+                      </div>
+                      <div id="emailHelp" class="form-text white-text">Nous avons besoin de votre mot de passe actuel pour valider vos modifications</div>
+                      <div class="form-floating mb-3">
+                        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control rounded-3", id: "floatingCurrentPassword", placeholder: "Mot de passe actuel" %>
+                        <label for="floatingCurrentPassword">Mot de passe actuel</label>
+                      </div>
+                      <%= f.submit "Mettre à jour", class: "w-100 mb-2 btn btn-lg rounded-3 btn-warning" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Edit Profile Modal -->
           <% end %>
           <!-- Login Modal -->
           <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -101,8 +141,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <!-- End Login Modal -->
+          </div><!-- End Login Modal -->
           <!-- Register Modal -->
           <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -149,8 +188,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <!-- End Register Modal -->
+          </div><!-- End Register Modal -->
           <!-- Password Reset Modal -->
           <div class="modal fade" id="passwordResetModal" tabindex="-1" aria-labelledby="passwordResetModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -177,8 +215,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <!-- End Password Reset Modal -->
+          </div><!-- End Password Reset Modal -->
           <!-- Resend Confirmation Modal -->
           <div class="modal fade" id="resendConfirmationModal" tabindex="-1" aria-labelledby="resendConfirmationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -205,8 +242,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          <!-- End Resend Confirmation Modal -->
+          </div><!-- End Resend Confirmation Modal -->
         </ul>
       </div>
     </div>
