@@ -60,7 +60,7 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body p-5 pt-0">
-                    <p class="mb-0 fs-5 white-text mb-3">Si vous souhaitez changer de pseudo ou de mot de passe, veuillez valider avec votre email et mot de passe actuel.</p>
+                    <p class="mb-0 fs-5 white-text mb-3">Si vous souhaitez changer de pseudo ou de mot de passe, veuillez valider avec votre mot de passe actuel.</p>
                     <%= form_for(@resource, as: @resource_name, url: registration_path(@resource_name), html: { method: :put }) do |f| %>
                       <div class="form-floating mb-3">
                         <%= f.text_field :pseudo, autofocus: true, autocomplete: "pseudo", class: "form-control rounded-3", value: current_user.pseudo, placeholder: "Changer de pseudo (facultatif)" %>

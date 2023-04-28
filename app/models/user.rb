@@ -7,8 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :lockable, :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
-  validates :pseudo, uniqueness: { case_sensitive: false }, allow_blank: true,
-                     length: { minimum: 3, maximum: 20 }
+  validates :pseudo, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 20 }
 
   attr_accessor :login
 
