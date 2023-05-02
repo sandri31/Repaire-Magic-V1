@@ -11,22 +11,22 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email || "#{auth.extra.raw_info.login}@example.com"
-      user.password = Devise.friendly_token[0, 20]
-      user.skip_confirmation!
-      user.full_name = auth.info.name
-      user.avatar_url = auth.info.image
+  def self.from_omniauth(access_token)
+    user_email = access_token.info.email || "github-#{access_token.uid}@example.com"
 
-      if auth.info.email
-        user.pseudo = auth.info.email.split('@').first
-      elsif auth.provider == 'github' && auth.extra.raw_info.login
-        user.pseudo = auth.extra.raw_info.login
-      end
+    user = User.where(email: user_email).first
+    user ||= User.create(pseudo: access_token.info.name,
+                         email: user_email,
+                         password: Devise.friendly_token[0, 20],
+                         confirmed_at: Time.now)
+    user.full_name = access_token.info.name
+    user.avatar_url = access_token.info.image
+    user.uid = access_token.uid
+    user.provider = access_token.provider
+    user.confirmed_at = Time.now if user.confirmed_at.nil?
+    user.save(validate: false)
 
-      Rails.logger.error "User validation errors: #{user.errors.full_messages.join(', ')}" unless user.save
-    end
+    user
   end
 
   def valid_password?(password)

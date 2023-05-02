@@ -1,35 +1,23 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def google_oauth2
-    user = User.from_omniauth(auth)
+  skip_before_action :verify_authenticity_token, only: :google_oauth2
 
-    if user.present?
-      sign_out_all_scopes
-      flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-      sign_in_and_redirect user, event: :authentication
-    else
-      flash[:alert] =
-        t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
-      redirect_to root_path
-    end
+  def google_oauth2
+    handle_auth 'Google'
   end
 
   def github
-    user = User.from_omniauth(auth)
-
-    if user.present?
-      sign_out_all_scopes
-      flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Github'
-      sign_in_and_redirect user, event: :authentication
-    else
-      flash[:alert] =
-        t 'devise.omniauth_callbacks.failure', kind: 'Github', reason: "#{auth.info.email} is not authorized."
-      redirect_to root_path
-    end
+    handle_auth 'GitHub'
   end
 
-  def failure
-    flash[:alert] = "Une erreur s'est produite lors de la connexion avec GitHub. Veuillez réessayer."
-    redirect_to root_path
+  def handle_auth(kind)
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+    if @user.persisted?
+      flash[:notice] = "Vous êtes connecté avec #{kind} !"
+      sign_in_and_redirect @user, event: :authentication
+    else
+      session['devise.auth_data'] = request.env['omniauth.auth'].except('extra')
+      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+    end
   end
 
   protected
