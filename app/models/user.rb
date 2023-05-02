@@ -47,4 +47,8 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
+  def connected_with_google_or_github?
+    provider == 'google_oauth2' || provider == 'github'
+  end
 end

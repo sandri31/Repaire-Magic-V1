@@ -70,17 +70,21 @@
                         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-3", value: current_user.email, placeholder: "name@example.com", required: true, readonly: true, disabled: true %>
                         <label for="floatingEmail">Email</label>
                       </div>
+
+                      <!-- Display password fields only if user is not connected with Google or Github -->
+                      <% password_disabled = current_user.connected_with_google_or_github? %>
+
                       <div class="form-floating mb-3">
-                      <%= f.password_field :password, autocomplete: "new-password", class: "form-control rounded-3", id: "floatingNewPassword", placeholder: "Nouveau mot de passe (facultatif)" %>
+                        <%= f.password_field :password, autocomplete: "new-password", class: "form-control rounded-3 #{'disabled' if password_disabled}", id: "floatingNewPassword", placeholder: "Nouveau mot de passe (facultatif)", disabled: password_disabled, readonly: password_disabled %>
                         <label for="floatingNewPassword">Nouveau mot de passe</label>
                       </div>
                       <div class="form-floating mb-3">
-                        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control rounded-3", id: "floatingPasswordConfirmation", placeholder: "Confirmer le nouveau mot de passe" %>
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control rounded-3 #{'disabled' if password_disabled}", id: "floatingPasswordConfirmation", placeholder: "Confirmer le nouveau mot de passe", disabled: password_disabled, readonly: password_disabled %>
                         <label for="floatingPasswordConfirmation">Confirmation du nouveau mot de passe</label>
                       </div>
                       <div id="emailHelp" class="form-text white-text">Nous avons besoin de votre mot de passe actuel pour valider vos modifications</div>
                       <div class="form-floating mb-3">
-                        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control rounded-3", id: "floatingCurrentPassword", placeholder: "Mot de passe actuel" %>
+                        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control rounded-3 #{'disabled' if password_disabled}", id: "floatingCurrentPassword", placeholder: "Mot de passe actuel", disabled: password_disabled, readonly: password_disabled %>
                         <label for="floatingCurrentPassword">Mot de passe actuel</label>
                       </div>
                       <%= f.submit "Mettre à jour", class: "w-100 mb-2 btn btn-lg rounded-3 btn-warning" %>
