@@ -9,10 +9,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :lockable, :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
+  validates :email, uniqueness: true, presence: true, length: { maximum: 255 }
   validates :pseudo, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 20 },
                      format: { with: /\A[\w\-_\À-ÿ]+\z/,
                                message: 'ne doit contenir aucun espace ni caractères spéciaux' }
-
   validate :unique_stripped_pseudo
   before_validation :strip_pseudo
 
