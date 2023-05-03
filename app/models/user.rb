@@ -7,7 +7,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :lockable, :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
-  validates :pseudo, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 20 }
+  validates :pseudo, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 20 },
+                     format: { with: /\A[\w\-_\À-ÿ]+\z/,
+                               message: 'ne doit contenir aucun espace ni caractères spéciaux' }
+
+  validate :unique_stripped_pseudo
+  before_validation :strip_pseudo
 
   attr_accessor :login
 
@@ -50,5 +55,19 @@ class User < ApplicationRecord
 
   def connected_with_google_or_github?
     provider == 'google_oauth2' || provider == 'github'
+  end
+
+  private
+
+  # Method to remove spaces before and after nickname
+  def strip_pseudo
+    pseudo.strip! if pseudo.present?
+  end
+
+  # Method to check if pseudo is unique after removing spaces before and after nickname
+  def unique_stripped_pseudo
+    return unless User.where('TRIM(pseudo) = ?', pseudo.strip).where.not(id:).exists?
+
+    # errors.add(:pseudo, 'a déjà été pris')
   end
 end
