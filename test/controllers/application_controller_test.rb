@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ApplicationControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   test 'should allow valid sign up parameters' do
-    post user_registration_url, params: { user: { pseudo: 'TestUser', email: 'test@example.com', password: 'password', password_confirmation: 'password' } }
+    post user_registration_url,
+         params: { user: { pseudo: 'TestUser', email: 'test@example.com', password: 'password',
+                           password_confirmation: 'password' } }
     assert_response :redirect
     follow_redirect!
     assert_response :success
@@ -25,7 +29,9 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     user = User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password')
     user.confirm
     sign_in user
-    put user_registration_url, params: { user: { pseudo: 'UpdatedUser', email: 'updated@example.com', password: '', password_confirmation: '', current_password: 'password' } }
+    put user_registration_url,
+        params: { user: { pseudo: 'UpdatedUser', email: 'updated@example.com', password: '', password_confirmation: '',
+                          current_password: 'password' } }
     assert_response :redirect
     follow_redirect!
     assert_response :success
