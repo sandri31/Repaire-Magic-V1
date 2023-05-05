@@ -68,6 +68,7 @@ class User < ApplicationRecord
 
   # Method to check if pseudo is unique after removing spaces before and after nickname
   def unique_stripped_pseudo
+    return if pseudo.nil?
     return unless User.where('TRIM(pseudo) = ?', pseudo.strip).where.not(id:).exists?
 
     # errors.add(:pseudo, 'a déjà été pris')
