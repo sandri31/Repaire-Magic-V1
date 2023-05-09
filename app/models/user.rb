@@ -44,11 +44,11 @@ class User < ApplicationRecord
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)
-    puts "DEBUG: login value is: #{login.inspect}" # DEBUG temporary
+    # puts "DEBUG: login value is: #{login.inspect}" # DEBUG temporary
 
     if login
       query_conditions = ['lower(pseudo) = :value OR lower(email) = :value', { value: login.strip.downcase }]
-      puts "DEBUG: query_conditions are: #{query_conditions.inspect}" # DEBUG temporary
+      # puts "DEBUG: query_conditions are: #{query_conditions.inspect}" # DEBUG temporary
       where(conditions).where(query_conditions).first
     elsif conditions.has_key?(:pseudo) || conditions.has_key?(:email)
       where(conditions.to_h).first
