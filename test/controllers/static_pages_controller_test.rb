@@ -6,19 +6,19 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test 'should get home' do
     get root_url
     assert_response :success
-    assert_select 'title', 'Home | AuthentificationWithDevise'
+    assert_select 'title', 'Home | RepairMagic'
   end
 
   test 'should get about' do
     get about_url
     assert_response :success
-    assert_select 'title', 'About | AuthentificationWithDevise'
+    assert_select 'title', 'About | RepairMagic'
   end
 
   test 'should get contact' do
     get contact_url
     assert_response :success
-    assert_select 'title', 'Contact | AuthentificationWithDevise'
+    assert_select 'title', 'Contact | RepairMagic'
   end
 
   test 'should redirect to home and show alert when not logged in and accessing services' do
@@ -35,6 +35,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     sign_in user
     get services_url
     assert_response :success
-    assert_select 'title', 'Services | AuthentificationWithDevise'
+    assert_select 'title', 'Services | RepairMagic'
   end
 end
