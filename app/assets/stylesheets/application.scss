@@ -8,9 +8,62 @@
 @import "services";
 @import "footer";
 
-/* Add if you want to use a footer
-main {
-  flex: 1;
-  min-height: calc(150vh - 150px);
+body.modal-open {
+  overflow: scroll;
+  margin-right: 0 !important;
 }
-*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #0f172a;
+  background-color: #f8f9fa;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+a {
+  color: #b24074;
+  text-decoration: none;
+}
+a:hover {
+  color: #4338ca;
+  text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+}
+.display-1 {
+  font-size: 90px;
+  font-weight: 700;
+}
+.display-2 {
+  font-weight: 600;
+}
+.background-gradient {
+  background-image: linear-gradient(to top right,#ef4444, #4338ca);
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.table > :not(caption) > * > * {
+  padding: 0.5rem 0;
+}
+table tbody tr td form .form-control {
+  display: inline-flex;
+  width: 50%;
+}
+#modal {
+  overflow: hidden;
+}
+.card-img-top {
+  height: 380px;
+}
+.modal-body .card-img-top {
+  width: 100%;
+  height: auto;
+}

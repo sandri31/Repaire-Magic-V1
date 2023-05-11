@@ -1,7 +1,12 @@
 .alert-custom {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 50%;
   margin: 1rem auto;
   text-align: center;
+  z-index: 1600;
 }
 
 @media (max-width: 999px) {

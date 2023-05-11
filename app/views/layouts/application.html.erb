@@ -20,8 +20,8 @@
         <% unless controller.controller_name == "passwords" && controller.action_name == "edit" %>
           <%= render "partials/navbar" %>
         <% end %>
-        <%= render "partials/flash" %>
       </div>
+      <%= render "partials/flash" %>
     </header>
     <main>
       <%= yield %>

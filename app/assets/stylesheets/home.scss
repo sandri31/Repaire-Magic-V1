@@ -1,7 +1,145 @@
-body {
-  background-image: image-set(image-url('background01.webp') 1x, image-url('background01.jpg') 1x);
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  height: 80vh;
+  background: url("https://images.ctfassets.net/s5n2t79q9icq/4TdkgDCfZNHGRW1HcRqVD2/1c01514429c7a87cf3930d3956c55f07/ddnAv0gyc_1920x700.jpg") fixed center center;
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  position: relative;
+}
+#hero .container {
+  padding-top: 80px;
+}
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+#hero h2 {
+  color: #eee;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+#hero .btn-get-started {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+#hero .btn-get-started:hover {
+  background: linear-gradient(to top right,#ef4444, #4338ca);
+  border: 2px solid black;
+}
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+@media (max-width: 768px) {
+  #hero {
+    height: 100vh;
+  }
+
+  #hero .container {
+    padding-top: 60px;
+  }
+
+  #hero h1 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Cta
+--------------------------------------------------------------*/
+.cta {
+  background: linear-gradient(rgba(2, 2, 2, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.ctfassets.net/s5n2t79q9icq/3tfGnXDb3vFtEBILPMoX7L/a3b367cce0afeabe73232d831e6e90ba/Chandra_Torch_of_Defiance_KLD_1920x1080_Wallpaper.jpg") fixed center center;
+  background-size: cover;
+  padding: 60px 0;
+}
+.cta h3 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+.cta p {
+  color: #fff;
+}
+.cta .cta-btn {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 25px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.cta .cta-btn:hover {
+  background: linear-gradient(to top right,#ef4444, #4338ca);
+  border: 2px solid black;
+}
+
+/*--------------------------------------------------------------
+# Cta-2
+--------------------------------------------------------------*/
+.cta-2 {
+  background: linear-gradient(rgba(2, 2, 2, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.ctfassets.net/s5n2t79q9icq/7lc9mVHz9HD3g1hYy7R3wZ/ecbdeab79994b833be0c584b03272d3d/urza-1920.jpg") fixed center center;
+  background-size: cover;
+  padding: 60px 0;
+}
+.cta-2 h3 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+.cta-2 p {
+  color: #fff;
+}
+.cta-2 .cta-btn {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 25px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.cta-2 .cta-btn:hover {
+  background: #009970;
+  border: 2px solid #009970;
 }
