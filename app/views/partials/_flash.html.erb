@@ -6,3 +6,9 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  setTimeout(function() {
+      bootstrap.Alert.getOrCreateInstance(document.querySelector(".alert")).close();
+  }, 10000)
+</script>
