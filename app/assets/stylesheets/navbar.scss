@@ -97,6 +97,14 @@
 /**
 * Modal Content
 */
+body.modal-open {
+  padding-right: 0 !important;
+  overflow: visible !important;
+}
+body.modal-open #header,
+body.modal-open .header-container .navbar {
+  padding-right: 0 !important;
+}
 .modal-content {
   background-color: rgba(0, 0, 0, 0.9) !important;
   border: 2px solid rgba(255, 255, 255, 0.5);

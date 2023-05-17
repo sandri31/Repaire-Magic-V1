@@ -53,7 +53,7 @@
                         <%= current_user.pseudo.capitalize %>
                       </a>
                       <ul class="dropdown-menu">
-                        <li><%= button_to "Mon profil", edit_user_registration_path, method: :get, class: "dropdown-item" %></li>
+                        <li><%= link_to "Mon profil", "#", class: "dropdown-item", data: { bs_toggle: "modal", bs_target: "#editProfileModal" } %></li>
                         <li><%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                       </ul>
                     </li>
@@ -314,5 +314,15 @@
     onscroll(document, headerScrolled)
   }
 
-})()
+})();
+
+var modalOpenClass = 'modal-open';
+
+document.querySelectorAll('.modal').forEach(function(modal) {
+  modal.addEventListener('hidden.bs.modal', function () {
+    if(document.querySelector('.modal.show')) {
+      document.body.classList.add(modalOpenClass);
+    }
+  });
+});
 </script><!-- End Navbar JS -->
