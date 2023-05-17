@@ -42,8 +42,6 @@ class RegistrationsController < Devise::RegistrationsController
     if resource_updated
       set_flash_message_for_update(resource, prev_unconfirmed_email)
       bypass_sign_in(resource, scope: resource_name) if sign_in_after_change_password?
-
-      respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
       set_minimum_password_length
@@ -54,9 +52,9 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:alert] = filtered_errors.full_messages.join(', ')
 
       flash[:alert] += " #{resource.errors[:current_password].join(', ')}" if resource.errors[:current_password].any?
-
-      respond_with resource
     end
+    # Redirect to a specific path after update
+    redirect_to after_update_path_for(resource)
   end
 
   def update_resource(resource, params)
