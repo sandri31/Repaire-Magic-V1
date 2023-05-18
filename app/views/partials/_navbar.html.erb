@@ -152,14 +152,6 @@
                                   Sign in with Google
                                 </button>
                               <% end %>
-                            <!-- Github -->
-                            <% elsif provider.to_s == "github" %>
-                              <%= form_for "Login", url: omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: "false" }, html: { class: 'w-100' } do |f| %>
-                                <button class="w-100 py-2 mb-2 btn btn-dark rounded-3" type="submit" data-dashlane-label="true" data-dashlane-rid="baf40f0347310a3e" data-form-type="other">
-                                  <ion-icon name="logo-github"></ion-icon>
-                                  Sign in with Github
-                                </button>
-                              <% end %>
                             <% end %>
                           <% end %>
                         <% end %>
