@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'services', to: 'static_pages#services'
   get 'contact', to: 'static_pages#contact'
+  get 'random', to: 'random#random'
 
   root 'home#index'
 end
