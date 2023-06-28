@@ -1,0 +1,64 @@
+<!-- modal -->
+<div class="row justify-content-center">
+  <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
+    <% if @card["layout"] == "transform" || @card["layout"] == "modal_dfc" %>
+      <!-- Modal for double faced cards with transform or modal_dfc layout -->
+      <div class="modal fade" id="transformModalToggle" aria-hidden="true" aria-labelledby="transformModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="transformModalToggleLabel"><%= @card["card_faces"][0]["printed_name"] %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="<%= @card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#transformModalToggle2" data-bs-toggle="modal">Recto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="transformModalToggle2" aria-hidden="true" aria-labelledby="transformModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="transformModalToggleLabel2"><%= @card["card_faces"][1]["printed_name"] %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="<%= @card["card_faces"][1]["image_uris"]["normal"] %>" class="card-img-top">
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#transformModalToggle" data-bs-toggle="modal">Verso</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#transformModalToggle">
+        <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
+        <img src="<%= @card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= @card["card_faces"][0]["printed_name"] %>">
+      </a>
+    <% else %>
+      <div class="modal fade" id="normalModalToggle" aria-hidden="true" aria-labelledby="normalModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="normalModalToggleLabel"><%= @card["printed_name"] %></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="<%= @card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= @card["name"] %>">
+          </div>
+          <div class="modal-footer">
+            <%#= link_to "Ajouter", search_cards_path(card_id: card["id"]), method: :post, class: "btn btn-primary" %>
+            <button class="btn btn-secondary" data-bs-target="#normalModalToggle" data-bs-toggle="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#normalModalToggle">
+      <img src="<%= @card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= @card["name"] %>">
+    </a>
+  <% end %>
+</div>

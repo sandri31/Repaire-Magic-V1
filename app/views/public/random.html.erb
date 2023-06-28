@@ -1,0 +1,24 @@
+<div class="container text-center" style="margin-top: 100px;">
+  <div class="row justify-content-center mt-5">
+    <div class="list-group-item">
+      <div class="d-grid gap-2 col-9 mx-auto">
+        <%= button_to "Recherche une carte aléatoire", { action: "random" }, method: :get, class: "btn btn-primary mt-5 btn-wide" %>
+      </div>
+      <%= render "partials/modal_random" %>
+      <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
+        <h5 class="mb-5"><%= @card["printed_name"] || @card["name"] %> <%= replace_magic_symbols(@card["mana_cost"], @magic_symbols) %></h5>
+        <% if @card["printed_text"].present? %>
+          <% @card["printed_text"].split("\n").each do |text| %>
+            <p><%= replace_magic_symbols(text, @magic_symbols) %></p>
+          <% end %>
+        <% else %>
+          <%= replace_magic_symbols(@card["oracle_text"], @magic_symbols) %>
+        <% end %>
+        <div class="text-muted"><i><%= @card["flavor_text"] %></i></div>
+      </div>
+      <div class="d-grid gap-2 col-9 mx-auto">
+        <%= button_to "Recherche une carte aléatoire", { action: "random" }, method: :get, class: "btn btn-primary mt-5 btn-wide" %>
+      </div>
+    </div>
+  </div>
+</div>
