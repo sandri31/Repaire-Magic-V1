@@ -11,10 +11,10 @@ Rails.application.routes.draw do
     delete 'users/sign_out' => 'sessions#destroy', as: :destroy_user_session
   end
 
+  # Public routes
+  root 'home#index'
   get 'about', to: 'static_pages#about'
   get 'services', to: 'static_pages#services'
   get 'contact', to: 'static_pages#contact'
   get 'random', to: 'random#random'
-
-  root 'home#index'
 end
