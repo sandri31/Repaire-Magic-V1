@@ -1,0 +1,9 @@
+<% if @cards["data"] == nil %>
+  <div class="container">
+    <%= render "partials/not_found" %>
+  </div>
+<% elsif @cards["total_cards"] > 4 %>
+  <div class="container">
+    <%= render "partials/scroll_to_top" %>
+  </div>
+<% end %>
