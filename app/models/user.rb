@@ -61,6 +61,10 @@ class User < ApplicationRecord
     provider == 'google_oauth2' || provider == 'github'
   end
 
+  def can_modify?(current_user)
+    self == current_user
+  end
+
   private
 
   # Method to remove spaces before and after nickname
