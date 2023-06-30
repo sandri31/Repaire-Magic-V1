@@ -133,6 +133,9 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mail_form (1.10.0)
+      actionmailer (>= 5.2)
+      activemodel (>= 5.2)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -295,6 +298,7 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  mail_form
   omniauth-github (~> 2.0, >= 2.0.1)
   omniauth-google-oauth2 (~> 1.1, >= 1.1.1)
   omniauth-rails_csrf_protection (~> 1.0, >= 1.0.1)

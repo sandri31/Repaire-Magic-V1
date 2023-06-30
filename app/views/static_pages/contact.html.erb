@@ -1,2 +1,70 @@
 <!-- app/views/static_pages/contact.html.erb -->
 <% provide(:title, "Contact") %>
+<!-- ======= header condition ======= -->
+<% if top_cards_path %>
+  <style type="text/css">
+    #header {
+      position: relative;
+    }
+  </style>
+<% end %>
+<!-- Main Contact-->
+<main class="mb-4" style="margin-top: 130px;">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <section id="cta-2" class="cta-2">
+          <div class="container">
+            <div class="text-center">
+              <h3>Vous voulez me contacter ?</h3>
+              <p>Remplissez le formulaire ci-dessous pour m'envoyer un message et je vous répondrai dans les plus brefs délais !</p>
+            </div>
+          </div>
+        </section>
+        <!-- End Cta Section -->
+        <div class="my-5">
+          <%= form_for @contact, url: contact_submit_path do |f| %>
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- * * * * Contact Form * * * * -->
+            <!-- * * * * * * * * * * * * * * *-->
+            <% if @contact.errors.any? %>
+            <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
+                <div class="font-bold text-rose-700 text-sm pb-4"><%= pluralize(@contact.errors.count, "erreur") %>il y a une erreur dans le formulaire</div>
+                <ul class="pb-0 mb-0">
+                <% @contact.errors.each do |error| %>
+                    <li class="text-rose-600 pl-4 text-sm"><%= error.full_message %></li>
+                <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <!-- Name input-->
+            <div class="form-floating">
+            <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Nom", required: "required", data: { "sb-validations": "required" } %>
+            <%= f.label :name, "Nom", class: "form-label" %>
+            </div>
+            <!-- Email address input-->
+            <div class="form-floating">
+            <%= f.text_field :email, class: "form-control", id: "email", placeholder: "Email", required: "required", data: { "sb-validations": "required,email" } %>
+            <%= f.label :email, "Email", class: "form-label" %>
+            </div>
+            <!-- Phone number input-->
+            <div class="form-floating">
+            <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "Téléphone" %>
+            <%= f.label :phone, "Téléphone *", class: "form-label" %>
+            </div>
+            <!-- Message input-->
+            <div class="form-floating">
+            <%= f.text_area :message, class: "form-control", id: "message", placeholder: "Message", required: "required", data: { "sb-validations": "required" }, style: "height: 12rem" %>
+            <%= f.label :message, "Message", class: "form-label" %>
+            </div>
+            <br />
+            <!-- Submit message-->
+            <%= f.submit "Envoyer", class: "btn btn-primary btn-xl", id: "submitButton" %>
+          <% end %>
+          <p>* Ce champ n'est pas obligatoire
+            <p>
+            </div>
+          </div>
+        </div>
+    </div>
+</main>
