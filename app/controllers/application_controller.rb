@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
     @resource ||= User.new
     @resource_name ||= :user
   end
+
+  def authenticate_user!
+    return if user_signed_in?
+
+    redirect_to root_path, alert: 'Vous devez être connecté pour accéder à cette page.'
+  end
 end

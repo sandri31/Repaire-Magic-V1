@@ -1,0 +1,72 @@
+<% if @cards["data"] != nil %>
+  <%= render "partials/has_more" %>
+  <% @cards["data"].each_with_index do |card, index| %>
+    <div class="card" style="width: 18rem;">
+      <% if card["layout"] == "transform" || card["layout"] == "modal_dfc" %>
+        <!-- Modal for double faced cards with transform or modal_dfc layout -->
+        <div class="modal fade" id="transformModalToggle" aria-hidden="true" aria-labelledby="transformModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="transformModalToggleLabel"><%= card["card_faces"][0]["printed_name"] %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top">
+              </div>
+              <div class="modal-footer">
+                <%= render "partials/add_to_collection", card: card %>
+                <button class="btn btn-secondary" data-bs-target="#transformModalToggle2" data-bs-toggle="modal">Recto</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="transformModalToggle2" aria-hidden="true" aria-labelledby="transformModalToggleLabel2" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="transformModalToggleLabel2"><%= card["card_faces"][1]["printed_name"] %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="<%= card["card_faces"][1]["image_uris"]["normal"] %>" class="card-img-top">
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-target="#transformModalToggle" data-bs-toggle="modal">Verso</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#transformModalToggle">
+          <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
+          <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
+        </a>
+        <%= render "partials/add_to_collection", card: card %>
+      <% else %>
+        <!-- Modal for normal cards -->
+        <div class="modal fade" id="normalModalToggle<%= index %>" aria-hidden="true" aria-labelledby="normalModalToggleLabel<%= index %>" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="normalModalToggleLabel<%= index %>"><%= card["printed_name"] %></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
+              </div>
+              <div class="modal-footer">
+                <%= render "partials/add_to_collection", card: card %>
+                <button class="btn btn-secondary" data-bs-target="#normalModalToggle<%= index %>" data-bs-toggle="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#normalModalToggle<%= index %>">
+          <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
+        </a>
+        <%= render "partials/add_to_collection", card: card %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= render "partials/has_more" %>
+<% end %>

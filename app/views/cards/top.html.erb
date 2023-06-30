@@ -1,0 +1,291 @@
+<!-- ======= header condition ======= -->
+<% if top_cards_path %>
+  <style type="text/css">
+    #header {
+      position: relative;
+    }
+  </style>
+<% end %>
+
+<!-- ======= Top Page ======= -->
+<div class="container text-center">
+  <h1 class="text-center display-2 mb-3"><span class="pb-3 background-gradient">Le Top 10 de tes cartes Magic :</span></h1>
+  <h4 class="lead"><strong>Tu as la possibilité d'aller voir directement par couleur toutes tes cartes et modifier leurs quantités :</strong></h4>
+
+  <%= render "partials/color_button" %>
+  <%= render "partials/not_cards" %>
+
+  <!-- ======= Top White ======= -->
+  <% if @user.cards.where(color_identity: "W") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-white container-fluid bg-light text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
+      <h2 class="h1">Top 10 des cartes blanches</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color -->
+          <% @cards = @user.cards.where(color_identity: "W").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top White -->
+
+  <!-- ======= Top Blue ======= -->
+  <% if @user.cards.where(color_identity: "U") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-blue container-fluid bg-primary text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
+      <h2 class="h1">Top 10 des cartes bleues</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color -->
+          <% @cards = @user.cards.where(color_identity: "U").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top Blue -->
+
+  <!-- ======= Top Black ======= -->
+  <% if @user.cards.where(color_identity: "B") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-black container-fluid bg-dark text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
+      <h2 class="h1">Top 10 des cartes noires</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color -->
+          <% @cards = @user.cards.where(color_identity: "B").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top Black -->
+
+  <!-- ======= Top Red ======= -->
+  <% if @user.cards.where(color_identity: "R") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-red container-fluid bg-danger text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
+      <h2 class="h1">Top 10 des cartes rouges</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color -->
+          <% @cards = @user.cards.where(color_identity: "R").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top Red -->
+
+  <!-- ======= Top Green ======= -->
+  <% if @user.cards.where(color_identity: "G") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-green container-fluid bg-success text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
+      <h2 class="h1">Top 10 des cartes vertes</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color -->
+          <% @cards = @user.cards.where(color_identity: "G").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top Green -->
+
+  <!-- ======= Top Multicolor ======= -->
+  <% if @user.cards.where("color_identity != 'W' AND color_identity != 'U'
+                                                              AND color_identity != 'B'
+                                                              AND color_identity != 'R'
+                                                              AND color_identity != 'G'") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-multicolor container-fluid bg-warning text-black p-3 btn btn-warning" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
+      <h2 class="h1">Top 10 des cartes multicolores</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color if color_identity.length > 1 -->
+          <% @cards = @user.cards.where("color_identity != 'W' AND color_identity != 'U'
+                                                              AND color_identity != 'B'
+                                                              AND color_identity != 'R'
+                                                              AND color_identity != 'G'").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top Multicolor -->
+
+  <!-- ======= Top Colorless ======= -->
+  <% if @user.cards.where(color_identity: "") == [] %>
+    <div class="container"></div>
+  <% else %>
+    <a class="box-colorless container-fluid bg-secondary text-white p-3 btn btn-secondary" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
+      <h2 class="h1">Top 10 des cartes incolore</h2>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Top</th>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display the top 10 most expensive cards, sorted by color -->
+          <% @cards = @user.cards.where(color_identity: "").order(price: :desc).limit(10) %>
+          <% @cards.each_with_index do |card, index| %>
+            <% if card.price.nil? %>
+              <% card.price = 0.001 %>
+              <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+              <% card.save %>
+            <% end %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= card.printed_name %></td>
+              <td><%= card.quantity %></td>
+              <td><%= card.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Top Colorless -->
+</div><!-- End Top Page -->
+
+<%= render "partials/scroll_to_top" %>

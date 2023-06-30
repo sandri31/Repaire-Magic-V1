@@ -1,0 +1,259 @@
+<!-- ======= Header condition ======= -->
+<% if cards_path %>
+  <style type="text/css">
+    #header {
+      position: relative;
+    }
+  </style>
+<% end %><!-- End Header condition -->
+
+<!-- ======= Collection Page ======= -->
+<div class="container text-center">
+  <h1 class="text-center display-2 mb-3">Ta propre <span class="pb-3 background-gradient">collection Magic est ici</span></h1>
+  <h4 class="lead"><strong>Actuellement tu as <%= @cards.sum(:quantity) %> cartes dans ta collection.<br />
+                      Avec un total de <%= @cards.pluck(:printed_name).uniq.count %> cartes uniques.</strong>
+  </h4>
+  <%= render "partials/color_button" %> <!-- Color button -->
+  <h2><span class=" pb-3 background-gradient">Ta collection actuellement est estimé à <%= @total_price %> €</span></h2>
+  <%= render "partials/not_cards" %> <!-- No cards -->
+
+  <!-- ======= White ======= -->
+  <% if @sorted_cards[:white].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
+      <p class="h1">Blanc (<%= @sorted_cards[:white].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity == "W" %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End White -->
+
+  <!-- ======= Blue ======= -->
+  <% if @sorted_cards[:blue].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary mt-2" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
+      <p class="h1">Bleu (<%= @sorted_cards[:blue].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <td>Quantité</td>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity == "U" %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Blue -->
+
+  <!-- ======= Black ======= -->
+  <% if @sorted_cards[:black].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark mt-2" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
+      <p class="h1">Noir (<%= @sorted_cards[:black].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <td>Quantité</td>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity == "B" %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Black -->
+
+  <!-- ======= Red ======= -->
+  <% if @sorted_cards[:red].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger mt-2" id="scrollButtonRed" href="#scrollButtonRed" role="button">
+      <p class="h1">Rouge (<%= @sorted_cards[:red].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <td>quantité</td>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity == "R" %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Red -->
+
+  <!-- ======= Green ======= -->
+  <% if @sorted_cards[:green].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-success text-center text-white p-3 btn btn-success mt-2" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
+      <p class="h1">Vert (<%= @sorted_cards[:green].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <td>Quantité</td>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity == "G" %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Green -->
+
+  <!-- ======= Multicolor ======= -->
+  <% if @sorted_cards[:multicolor].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning mt-2" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
+      <p class="h1">Multicolore (<%= @sorted_cards[:multicolor].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity.length > 1 %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Multicolor -->
+
+  <!-- ======= Colorless ======= -->
+  <% if @sorted_cards[:colorless].sum(:quantity) > 0 %>
+    <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary mt-2" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
+      <p class="h1">Incolore (<%= @sorted_cards[:colorless].sum(:quantity) %>)</p>
+    </a>
+    <div class="container table-responsive-sm">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Carte</th>
+            <th>Quantité</th>
+            <th>Prix (unitaire)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cards.sort_by(&:printed_name).each do |card| %>
+            <% if card.color_identity == "" %>
+              <tr>
+                <td><%= card.printed_name %></td>
+                <td>
+                  <%= form_with model: card, local: true do |form| %>
+                    <%= form.number_field :quantity, class: "form-control" %>
+                    <%= form.submit "Ok", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+                <td><%= card.price %> €</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %><!-- End Colorless -->
+</div><!-- End Collection Page -->
+
+<%= render "partials/scroll_to_top" %>

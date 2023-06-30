@@ -8,7 +8,15 @@
 </div>
 
 <script>
+  // close flash messages after 5 seconds
   setTimeout(function() {
       bootstrap.Alert.getOrCreateInstance(document.querySelector(".alert")).close();
-  }, 10000)
+  }, 5000)
+  // close flash messages on click dropdown menu
+  document.querySelector('.dropdown-menu').addEventListener('mouseenter', function() {
+  let alertInstance = bootstrap.Alert.getOrCreateInstance(document.querySelector(".alert"));
+  if (alertInstance) {
+    alertInstance.close();
+  }
+});
 </script>

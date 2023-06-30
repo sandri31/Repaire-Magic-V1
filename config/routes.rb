@@ -11,10 +11,21 @@ Rails.application.routes.draw do
     delete 'users/sign_out' => 'sessions#destroy', as: :destroy_user_session
   end
 
+  resources :cards do
+    collection do
+      get 'top'
+    end
+  end
+
+  # Home page
+  root 'home#index'
+
+  # Static pages
   get 'about', to: 'static_pages#about'
   get 'services', to: 'static_pages#services'
-  get 'contact', to: 'static_pages#contact'
-  get 'random', to: 'random#random'
+  get 'contact', to: 'static_pages#contact', as: 'contact'
+  post 'contact', to: 'static_pages#create', as: :contact_submit
 
-  root 'home#index'
+  # Random page
+  get 'random', to: 'random#random'
 end

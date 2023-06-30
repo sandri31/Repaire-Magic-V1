@@ -1,0 +1,26 @@
+<% if new_card_path %>
+  <style type="text/css">
+    #header {
+      position: relative;
+    }
+  </style>
+<% end %>
+
+<div class="container text-center">
+  <h1 class="text-center display-2 mb-3">Recherche tes <span class="pb-3 background-gradient">propres cartes</span></h1>
+  <h4 class="lead"><strong>Voici les <%= @cards["total_cards"] %> cartes que nous avons trouvé pour vous !</strong></h4>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 my-5">
+        <%= form_tag(new_card_path, method: :get) do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], placeholder: "Recherche", class: "form-control" %>
+            <%= submit_tag "Rechercher", class: "btn btn-outline-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= render "partials/errors" %>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3 mt-3">
+      <%= render "partials/modals_cards" %>
+    </div>
+</div>

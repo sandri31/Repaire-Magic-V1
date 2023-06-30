@@ -3,6 +3,8 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+  has_many :cards
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -57,6 +59,10 @@ class User < ApplicationRecord
 
   def connected_with_google_or_github?
     provider == 'google_oauth2' || provider == 'github'
+  end
+
+  def can_modify?(current_user)
+    self == current_user
   end
 
   private

@@ -1,0 +1,9 @@
+<div class="pagination d-flex justify-content-center">
+  <% if @cards["has_more"] == true %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Attention!</strong>
+      Votre recherche compte <%= @cards["total_cards"] %> cartes. Le site ne permet pas d'afficher plus de 175 cartes.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+</div>

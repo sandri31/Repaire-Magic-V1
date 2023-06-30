@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <%= form_for @card do |f| %>
+    <% if card["layout"] == "transform" || card["layout"] == "modal_dfc" %>
+      <%= f.hidden_field :name, value: card["card_faces"][0]["name"] %>
+      <%= f.hidden_field :printed_name, value: card["card_faces"][0]["printed_name"] %>
+      <%= f.hidden_field :image_uris, value: card["card_faces"][0]["image_uris"]["normal"] %>
+    <% elsif card["layout"] == "adventure" %>
+      <%= f.hidden_field :name, value: card["card_faces"][0]["name"] %>
+      <%= f.hidden_field :printed_name, value: card["card_faces"][0]["printed_name"] %>
+      <%= f.hidden_field :image_uris, value: card["image_uris"]["normal"] %>
+    <% else %>
+      <%= f.hidden_field :name, value: card["name"] %>
+      <%= f.hidden_field :printed_name, value: card["printed_name"] %>
+      <%= f.hidden_field :image_uris, value: card["image_uris"]["normal"] %>
+    <% end %>
+    <%= f.hidden_field :multiverse_ids, value: card["multiverse_ids"][0] %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :color_identity, value: card["color_identity"][0..-1] %>
+    <%= f.hidden_field :quantity, value: 0 %>
+    <%= f.hidden_field :price, value: card["prices"]["usd"] %>
+
+    <%= f.submit "Ajouter", class: "btn btn-outline-primary d-grid gap-2 col-12 mx-auto" %>
+  <% end %>
+<% end %>
