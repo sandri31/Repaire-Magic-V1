@@ -21,8 +21,8 @@
           <span class="d-block pb-2">Et évaluons le prix de ta collection !</span>
         </p>
         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-4" id="about">
-          <%= link_to "Recherche tes cartes →", class: "btn btn-dark btn-lg" %>
-          <%= link_to "Evalue ta collection", class: "btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0" %>
+          <%= link_to "Recherche tes cartes →", new_card_path, class: "btn btn-dark btn-lg" %>
+          <%= link_to "Evalue ta collection", cards_path, class: "btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0" %>
         </div>
       </div>
   </div>
@@ -34,7 +34,7 @@
     <div class="text-center" data-aos="zoom-in">
       <h3>Ne soyez pas en attente de la carte providentielle, soyez actif !</h3>
       <p> Rajoute tes cartes comme indiquer ci-dessus et va voir ton top 10 des cartes les plus chères de ta collection ! Et peut-être, tu trouveras la carte qui te semble banale mais qui vaut un max !</p>
-      <a class="cta-btn" href="#">Top 10</a>
+      <a class="cta-btn" href="<%= top_cards_path %>">Top 10</a>
     </div>
   </div>
 </section><!-- End Cta Section -->
@@ -49,7 +49,7 @@
           <span class="text-muted">trouver tes cartes.</span>
         </h2>
         <p class="lead">Tu vas trouver toutes tes cartes de façon rapide et simple à la fois !<br>Soit patient et amuse-toi.</p>
-        <a href="#" class="landing-badge">
+        <a href="<%= new_card_path %>" class="landing-badge">
           <button type="button" class="btn btn-outline-dark">Direction fouille intensive</button>
         </a>
       </div>
@@ -66,7 +66,7 @@
           <span class="text-muted">ta collection.</span>
         </h2>
         <p class="lead">Ta collection est visible entièrement ici. Tu vas pouvoir voir le prix unitaire de chacune de tes cartes.</p>
-        <a href="#" class="landing-badge">
+        <a href="<%= cards_path %>" class="landing-badge">
           <button type="button" class="btn btn-outline-dark">Direction calculette en main!</button>
         </a>
       </div>
@@ -87,7 +87,7 @@
           Ce prix reflète <b><u>une estimation</u></b> de ces cartes.
         </p>
         <a
-          href="#" class="landing-badge">
+          href="<%= top_cards_path %>" class="landing-badge">
           <button type="button" class="btn btn-outline-dark">Direction feuille de calcul !</button>
         </a>
       </div>
@@ -101,7 +101,7 @@
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading col-12 col-md-5 d-flex flex-column mb-3 py-4 order-md-2">Enfin, voici ce que l'aléatoire signifie réellement.</h2>
-        <p class="lead">Découvre <a href="#">ici</a> une carte aléatoire à chaque clique, un vrai délice.</p>
+        <p class="lead">Découvre <a href="<%= random_path %>">ici</a> une carte aléatoire à chaque clique, un vrai délice.</p>
       </div>
       <div class="col-md-5 py-3 order-md-1">
         <img src="https://media.magic.wizards.com/images/featured/EN_VisitedPlanes_Kamigawa_0.png" alt="Carrousel slide 3" class="d-block w-100 rounded">
