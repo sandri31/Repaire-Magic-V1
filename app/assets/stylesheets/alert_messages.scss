@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-  margin: 1rem auto;
+  margin: 3rem auto;
   text-align: center;
   z-index: 1600;
 }
@@ -12,10 +12,9 @@
 @media (max-width: 999px) {
   .alert-custom {
     position: fixed;
-    bottom: 0;
-    left: 0;
     right: 0;
+    margin-top: 70px;
     z-index: 2000;
-    width: 100%;
+    width: 90%;
   }
 }
