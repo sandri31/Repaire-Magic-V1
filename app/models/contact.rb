@@ -10,7 +10,8 @@ class Contact < MailForm::Base
     {
       to: ENV['MAILER_FROM'],
       subject: "#{name} te contact de ton site: RepaireMagic V1",
-      from: %("#{name}" <#{email}>)
+      from: 'contact@florentsandri.fr',
+      reply_to: %("#{name}" <#{email}>)
     }
   end
 end
