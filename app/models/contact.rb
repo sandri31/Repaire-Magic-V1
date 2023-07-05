@@ -8,7 +8,7 @@ class Contact < MailForm::Base
 
   def headers
     {
-      to: ENV['MAILER_FROM'],
+      to: ENV['EMAIL_CONTACT'],
       subject: "#{name} te contact de ton site: Magic",
       from: %("#{name}" <#{email}>)
     }

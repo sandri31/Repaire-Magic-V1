@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['MAILER_FROM']
+  default from: ENV['EMAIL_CONTACT']
   layout 'mailer'
 end
