@@ -2,8 +2,13 @@
 
 class RandomController < ApplicationController
   def random
-    @card = ScryfallService.random
-    @magic_symbols = magic_symbols
+    begin
+      @card = ScryfallService.random
+      @magic_symbols = magic_symbols
+    rescue NoMethodError => e
+      flash[:error] = "Une erreur est survenue lors de la génération d'une carte aléatoire. Veuillez réessayer."
+      redirect_to root_path
+    end
   end
 
   private

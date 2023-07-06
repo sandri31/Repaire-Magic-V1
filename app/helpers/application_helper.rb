@@ -6,6 +6,8 @@
 # @return [String] Text with magic symbols replaced by images
 module ApplicationHelper
   def replace_magic_symbols(text, magic_symbols)
+    return if text.nil?
+
     magic_symbols.each do |symbol, image|
       text = text.gsub(/(?<!\w)#{Regexp.escape(symbol)}(?!\w)/,
                        ActionController::Base.helpers.image_tag(image, class: 'magic-symbol'))
