@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     @resource_name ||= :user
   end
 
-  def authenticate_user!
+  def require_user_authentication!
     return if user_signed_in?
 
     redirect_to root_path, alert: 'Vous devez être connecté pour accéder à cette page.'

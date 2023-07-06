@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
   before_action :search_params, only: %i[new]
   before_action :require_user_permission, only: %i[edit update destroy]
-  before_action :authenticate_user!, only: %i[index top]
+  before_action :require_user_authentication!, only: %i[index top]
 
   # GET /cards or /cards.json
   def index
