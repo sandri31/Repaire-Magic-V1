@@ -1,53 +1,91 @@
 # README
+[![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-# Authentification avec Ruby on Rails 7 et Devise
+![ScreenMagic](https://user-images.githubusercontent.com/85675011/198518511-894576e4-4b1e-43e4-938c-3099b2c7507c.png)
 
-[Ce projet](https://authentification-with-devise-production.up.railway.app/) est une implémentation de l'authentification dans une application Ruby on Rails 7 en utilisant la gem Devise.
+## Table des matières
 
-![Authentification_Capture](https://user-images.githubusercontent.com/85675011/233649523-2d30faac-3f3a-4780-84ba-b395c9433995.png)
+- [Aperçu du projet](#aperçu-du-projet)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+  - [Utilisation](#utilisation)
+  - [Licence](#licence)
+- [Tests](#tests)
+- [Faits](#faits)
 
-## Prérequis
+## Aperçu du projet
 
-- Ruby on Rails 7
-- Ruby 3.1.2
-- Une base de données compatible avec Rails (par exemple, PostgreSQL, MySQL ou SQLite)
+La problématique est la suivante : "Comment estimer la valeur de ma collection de cartes Magic The Gathering ?".  
+Ayant trouvé aucune solution à mon gout, j'ai décidé de me lancer dans ce projet.  
+Le but était ici de développer un système tout entier, qui permette de gérer sa propre collection de cartes Magic The Gathering, et de pouvoir voir l'estimation de celle-ci.
+
+Ce projet est développé en Ruby on Rails pour le back-end, et utilise l'API REST de [Scryfall](https://scryfall.com/).  
+J'utilise Bootstrap pour le front-end, et la gem Devise pour la gestion des utilisateurs.  
+Pour la base de données, j'utilise PostgreSQL.
+
+![ScreenMagic2](https://user-images.githubusercontent.com/85675011/198518404-3ec8a18e-a9c3-4805-8c62-c987d0e0cfa9.png)
+
+### Prérequis
+Vérifier que vous avez la bonne version de Ruby et de Rails installé sur votre machine.
+
+```bash
+ruby -v
+rails -v
+```
+Ici, il nous faudra ruby '3.1.2' et rails '7.0.4'.
 
 ## Installation
+Il faut cloner le projet sur votre machine,
+et installer les gems nécessaires au projet.
 
-1. Cloner le projet en utilisant une URL HTTPS ou SSH
 ```bash
-git clone https://github.com/sandri31/Authentification-with-Devise.git
-```
-```bash
-git clone git@github.com:sandri31/Authentification-with-Devise.git
-```
-2. Ouvrir le projet et installer les dépendances avec
-```bash
-cd Authentification-with-Devise
+git clone git@github.com:sandri31/Repaire-Magic-V1.git
 bundle install
 ```
-3. Créer la base de données et lancer les migrations avec
+
+Il faut créer la base de données, et lancer les migrations.
+
 ```bash
 rails db:create
 rails db:migrate
 ```
-4. Lancer le serveur
+
+Et enfin, lancer le serveur.
+
 ```bash
 rails server
 ```
-5. Ouvrir le navigateur à l'adresse http://localhost:3000
 
-## Fonctionnalités
+## Utilisation
 
-- Inscription des utilisateurs (pseudo, e-mail, mot de passe, confirmation du mot de passe)
-- Connexion et déconnexion des utilisateurs
-- Confirmation du compte par e-mail
-- Réinitialisation du token d'authentification par e-mail
-- Réinitialisation du mot de passe avec envoi d'e-mail
-- OAuth avec Google / GitHub
-- Messages d'erreur personnalisés
-- Limitation du nombre de tentatives de connexion
+Vous avez la possibilité de créer un compte utilisateur, de vous connecter et d'ajouter des cartes à votre collection de cartes Magic The Gathering (en cours de développement).
+Et ainsi avoir une estimation en détail de votre propre collection de cartes.
+
+Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70 000 cartes Magic The Gathering au hasard. Juste pour le fun.
+
+![ScreenMagic4](https://user-images.githubusercontent.com/85675011/198519157-d78cfd39-bd73-4d9f-b45c-4b1c5a988d86.png)
+
+Le site est actualisé régulièrement, et les cartes sont ajoutées au fur et à mesure.
+Vous pouvez voir le site en production :
+  - Rendez-vous sur ce lien : [www.repairemagic.fr](https://www.repairemagic.fr/)
+  - Enjoy !
 
 ## Licence
 
 Ce projet est sous licence [MIT](https://opensource.org/licenses/MIT). Vous êtes libre de l'utiliser, de le modifier et de le redistribuer selon les termes de la licence.
+
+## Tests
+
+Les tests sont en cours de développement.
+
+## Faits
+
+🃏 Le projet permet de gérer une collection de cartes Magic The Gathering et de voir son estimation  
+💻 Il est développé en Ruby on Rails avec l'API REST de Scryfall  
+🎨 Le front-end utilise Bootstrap et la gestion des utilisateurs est assurée par Devise  
+🛠️ Les prérequis sont Ruby '3.1.2' et Rails '7.0.4'  
+🚀 Le site est actualisé régulièrement avec l'ajout de nouvelles cartes  
+📝 Le projet est sous licence libre et les contributions sont les bienvenues  
+🙏 Remerciements à [Coding Accelerator](https://joincodingnow.com/) pour son aide  
