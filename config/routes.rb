@@ -20,11 +20,14 @@ Rails.application.routes.draw do
   # Home page
   root 'home#index'
 
+  # Contact page
+  get 'contact', to: 'static_pages#contact', as: 'contact'
+  post 'contact', to: 'static_pages#create', as: :contact_submit
+
   # Static pages
   get 'about', to: 'static_pages#about'
   get 'services', to: 'static_pages#services'
-  get 'contact', to: 'static_pages#contact', as: 'contact'
-  post 'contact', to: 'static_pages#create', as: :contact_submit
+  get 'suscribe', to: 'static_pages#suscribe'
 
   # Random page
   get 'random', to: 'random#random'

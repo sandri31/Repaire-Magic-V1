@@ -57,6 +57,7 @@
                         <li><%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                       </ul>
                     </li>
+                    <%= link_to "Abonnement", suscribe_path, class: "getstarted scrollto" %>
                   </ul>
                 <% else %>
                   <%= link_to "Connexion", "#", class: "getstarted scrollto", data: { bs_toggle: "modal", bs_target: "#loginModal" } %>
