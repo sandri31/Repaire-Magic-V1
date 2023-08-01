@@ -27,7 +27,6 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
 # Gem used for payment processing
-gem 'pay'
 gem 'stripe', '~> 7.0'
 
 group :development, :test do
