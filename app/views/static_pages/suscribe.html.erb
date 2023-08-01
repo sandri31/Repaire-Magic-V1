@@ -25,7 +25,7 @@
               <li class="mt-3">Vous participez à faire perdurer la communauté Magic.</li>
             </ul>
             <%= form_with url: create_checkout_session_subscriptions_path, class: 'w-100', data: { turbo: false } do |form| %>
-              <%= hidden_field_tag :plan, 'price_1NZxDKJNwkeyDZcD5aMwqeKA' %>
+              <%= hidden_field_tag :plan, Rails.env.development? ? ENV['TEST_PLAN_A'] : ENV['LIVE_PLAN_A'] %>
               <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
             <% end %>
           </div>
@@ -48,7 +48,7 @@
               <li class="mt-3">Vous encouragez le développement d'une plateforme dédiée à Magic.</li>
             </ul>
             <%= form_with url: create_checkout_session_subscriptions_path, class: 'w-100', data: { turbo: false } do |form| %>
-              <%= hidden_field_tag :plan, 'price_1NaJ4aJNwkeyDZcDECm1DOkT' %>
+              <%= hidden_field_tag :plan, Rails.env.development? ? ENV['TEST_PLAN_B'] : ENV['LIVE_PLAN_B'] %>
               <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
             <% end %>
           </div>
@@ -72,7 +72,7 @@
               <li class="mt-3">Vous contribuez de manière significative à la croissance et à l'amélioration de la communauté Magic.</li>
             </ul>
             <%= form_with url: create_checkout_session_subscriptions_path, class: 'w-100', data: { turbo: false } do |form| %>
-              <%= hidden_field_tag :plan, 'price_1NaJ6pJNwkeyDZcDsKGeXh4V' %>
+              <%= hidden_field_tag :plan, Rails.env.development? ? ENV['TEST_PLAN_C'] : ENV['LIVE_PLAN_C'] %>
               <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
             <% end %>
           </div>
