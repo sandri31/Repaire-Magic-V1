@@ -5,6 +5,14 @@ class HomeController < ApplicationController
 
   def index
     @resource ||= User.new
+
+    if params[:payment] == 'cancel'
+      redirect_to suscribe_path
+      flash[:alert] = 'Le paiement a été annulé.'
+    elsif params[:payment] == 'success'
+      redirect_to root_path
+      flash[:notice] = 'Le paiement a été effectué avec succès.'
+    end
   end
 
   private
