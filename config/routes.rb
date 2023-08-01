@@ -29,6 +29,14 @@ Rails.application.routes.draw do
   get 'services', to: 'static_pages#services'
   get 'suscribe', to: 'static_pages#suscribe'
 
+  # Stripe
+  resources :subscriptions do
+    collection do
+      post :create_checkout_session
+    end
+  end
+  post 'stripe_webhooks', to: 'stripe_webhooks#create'
+
   # Random page
   get 'random', to: 'random#random'
 end

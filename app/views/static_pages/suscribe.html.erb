@@ -21,10 +21,13 @@
               <li class="mt-5">Vous prouvez votre appréciation pour le site.</li>
               <li class="mt-3">Vous m'aidez à maintenir les opérations de base du site.</li>
               <li class="mt-3">Chaque contribution compte et est fortement appréciée.</li>
-              <li class="mt-3">Vous recevrez un remerciement spécial sur notre page des contributeurs.</li>
+              <li class="mt-3">Vous recevrez un remerciement spécial sur notre page des contributeurs. <br />(En cours de développement)</li>
               <li class="mt-3">Vous participez à faire perdurer la communauté Magic.</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Valider</button>
+            <%= form_tag create_checkout_session_subscriptions_path, class: 'w-100' do %>
+              <%= hidden_field_tag :plan, 'price_1NZxDKJNwkeyDZcD5aMwqeKA' %>
+              <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -40,11 +43,14 @@
             <ul class="list-unstyled mt-3 mb-4">
               <li class="mt-5">Vous m'aidez non seulement à maintenir le site, mais également à y ajouter de nouvelles fonctionnalités.</li>
               <li class="mt-3">En tant que Partenaire des Arcanes, vous jouez un rôle essentiel pour aider le site à se développer.</li>
-              <li class="mt-3">Vous recevrez un remerciement spécial sur notre page des contributeurs.</li>
-              <li class="mt-3">Vous aurez un accès anticipé à de nouvelles fonctionnalités.</li>
+              <li class="mt-3">Vous recevrez un remerciement spécial sur notre page des contributeurs. <br />(En cours de développement)</li>
+              <li class="mt-3">Vous contribuez à assurer l'hébergement de la plateforme.</li>
               <li class="mt-3">Vous encouragez le développement d'une plateforme dédiée à Magic.</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Valider</button>
+            <%= form_tag create_checkout_session_subscriptions_path, class: 'w-100' do %>
+              <%= hidden_field_tag :plan, 'price_1NZxIzJNwkeyDZcDoWVYDU7G' %>
+              <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -60,12 +66,15 @@
             <ul class="list-unstyled mt-3 mb-4">
               <li class="mt-5">Vous êtes le pilier qui m'aide à faire avancer le site de manière significative.</li>
               <li class="mt-3">Votre contribution permet des mises à jour plus importantes, une meilleure maintenance et la possibilité de planifier des événements spéciaux pour la communauté.</li>
-              <li class="mt-3">En tant que Gardien du Mana, vous recevrez un remerciement spécial sur notre page des contributeurs.</li>
-              <li class="mt-3">Vous aurez un accès anticipé à de nouvelles fonctionnalités.</li>
+              <li class="mt-3">En tant que Gardien du Mana, vous recevrez un remerciement spécial sur notre page des contributeurs.<br />(En cours de développement)</li>
+              <li class="mt-3">Vous contribuez de manière significative à assurer l'hébergement de la plateforme.</li>
               <li class="mt-3">Votre nom sera inscrit dans les crédits de chaque nouvelle mise à jour du site.</li>
               <li class="mt-3">Vous contribuez de manière significative à la croissance et à l'amélioration de la communauté Magic.</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Valider</button>
+            <%= form_tag create_checkout_session_subscriptions_path, class: 'w-100' do %>
+              <%= hidden_field_tag :plan, 'price_1NZxKTJNwkeyDZcDXS8f1Epd' %>
+              <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
+            <% end %>
           </div>
         </div>
       </div>
