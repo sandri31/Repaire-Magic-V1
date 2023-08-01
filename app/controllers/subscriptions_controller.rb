@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user!, only: [:create_checkout_session]
+
   def new; end
 
   def create_checkout_session
@@ -20,5 +22,13 @@ class SubscriptionsController < ApplicationController
                                                })
 
     redirect_to session.url, status: 303, allow_other_host: true
+  end
+
+  private
+
+  def authenticate_user!
+    return if user_signed_in?
+
+    redirect_to suscribe_path, alert: 'Vous devez vous connecter pour souscrire à un abonnement.'
   end
 end

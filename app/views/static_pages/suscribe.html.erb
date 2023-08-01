@@ -24,7 +24,7 @@
               <li class="mt-3">Vous recevrez un remerciement spécial sur notre page des contributeurs. <br />(En cours de développement)</li>
               <li class="mt-3">Vous participez à faire perdurer la communauté Magic.</li>
             </ul>
-            <%= form_tag create_checkout_session_subscriptions_path, class: 'w-100' do %>
+            <%= form_with url: create_checkout_session_subscriptions_path, class: 'w-100', data: { turbo: false } do |form| %>
               <%= hidden_field_tag :plan, 'price_1NZxDKJNwkeyDZcD5aMwqeKA' %>
               <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
             <% end %>
@@ -47,7 +47,7 @@
               <li class="mt-3">Vous contribuez à assurer l'hébergement de la plateforme.</li>
               <li class="mt-3">Vous encouragez le développement d'une plateforme dédiée à Magic.</li>
             </ul>
-            <%= form_tag create_checkout_session_subscriptions_path, class: 'w-100' do %>
+            <%= form_with url: create_checkout_session_subscriptions_path, class: 'w-100', data: { turbo: false } do |form| %>
               <%= hidden_field_tag :plan, 'price_1NZxIzJNwkeyDZcDoWVYDU7G' %>
               <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
             <% end %>
@@ -71,7 +71,7 @@
               <li class="mt-3">Votre nom sera inscrit dans les crédits de chaque nouvelle mise à jour du site.</li>
               <li class="mt-3">Vous contribuez de manière significative à la croissance et à l'amélioration de la communauté Magic.</li>
             </ul>
-            <%= form_tag create_checkout_session_subscriptions_path, class: 'w-100' do %>
+            <%= form_with url: create_checkout_session_subscriptions_path, class: 'w-100', data: { turbo: false } do |form| %>
               <%= hidden_field_tag :plan, 'price_1NZxKTJNwkeyDZcDXS8f1Epd' %>
               <%= button_tag "Valider", class: "btn btn-lg btn-outline-primary w-100" %>
             <% end %>
