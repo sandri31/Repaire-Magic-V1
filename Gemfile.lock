@@ -74,9 +74,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap (5.2.3)
+    bootstrap (5.3.1)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.11.6, < 3)
+      popper_js (>= 2.11.8, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.0)
@@ -186,7 +186,7 @@ GEM
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pg (1.4.6)
-    popper_js (2.11.6)
+    popper_js (2.11.8)
     public_suffix (5.0.1)
     puma (5.6.7)
       nio4r (~> 2.0)
@@ -298,7 +298,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
-  bootstrap (~> 5.2, >= 5.2.3)
+  bootstrap (~> 5.3, >= 5.3.1)
   capybara
   debug
   devise (~> 4.9, >= 4.9.2)
