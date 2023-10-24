@@ -3,7 +3,7 @@
 <% devise_mapping = Devise.mappings[resource_name] %>
 
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center"> <!-- fixed-top -->
+<header id="header" class="<%= 'fixed-top' unless request.path == '/cards/new' %> d-flex align-items-center"> <!-- fixed-top -->
   <div class="container">
     <div class="header-container d-flex align-items-center justify-content-between">
       <div class="logo">
